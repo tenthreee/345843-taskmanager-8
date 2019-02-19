@@ -335,3 +335,10 @@ const renderCards = (amount) => {
 };
 
 renderCards(7);
+
+const onFiltersBarClick = () => {
+  removeChildren(taskBoard);
+  renderCards(6);
+};
+
+filtersBar.addEventListener(`click`, onFiltersBarClick);
