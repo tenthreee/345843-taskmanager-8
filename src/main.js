@@ -30,7 +30,7 @@ const getFilterElement = (caption, amount, isChecked = false) => {
 
 const renderFilters = () => {
   FILTERS.forEach((it) => {
-    filtersBar.insertAdjacentHTML(`beforeend`, getFilterElement(it, getRandomNumber(0, 100)));
+    filtersBar.insertAdjacentHTML(`beforeend`, getFilterElement(it, getRandomNumber(0, 10)));
   });
 };
 
