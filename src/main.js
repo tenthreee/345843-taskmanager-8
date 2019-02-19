@@ -5,6 +5,8 @@ const FILTERS = [`All`, `Overdue`, `Today`, `Favorites`, `Repeating`, `Tags`, `A
 const filtersBar = document.querySelector(`.main__filter`);
 const taskBoard = document.querySelector(`.board__tasks`);
 
+const getRandomNumber = (min, max) => Math.round(Math.random() * (max - min) + min);
+
 const removeChildren = (parent) => {
   parent.innerHTML = ``;
 };
@@ -27,7 +29,7 @@ const getFilterElement = (caption, amount, isChecked = false) => {
 
 const renderFilters = () => {
   FILTERS.forEach((it) => {
-    filtersBar.insertAdjacentHTML(`beforeend`, getFilterElement(it, 3));
+    filtersBar.insertAdjacentHTML(`beforeend`, getFilterElement(it, getRandomNumber(0, 100)));
   });
 };
 
@@ -338,7 +340,7 @@ renderCards(7);
 
 const onFiltersBarClick = () => {
   removeChildren(taskBoard);
-  renderCards(6);
+  renderCards(getRandomNumber(0, 10));
 };
 
 filtersBar.addEventListener(`click`, onFiltersBarClick);
