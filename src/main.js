@@ -343,9 +343,14 @@ const renderCards = (amount) => {
 
 renderCards(CardsAmount.DEFAULT);
 
-const onFiltersBarClick = () => {
+const onFiltersBarClick = (evt) => {
+  let amount = document.querySelector(`.${evt.target.id}-count`).innerHTML;
+
   removeChildren(taskBoard);
-  renderCards(getRandomNumber(0, CardsAmount.MAX));
+  renderCards(amount);
+
+  // console.log(`.${evt.target.id}-count`);
+  // console.log(document.querySelector(`.${evt.target.id}-count`).innerHTML);
 };
 
 filtersBar.addEventListener(`click`, onFiltersBarClick);
