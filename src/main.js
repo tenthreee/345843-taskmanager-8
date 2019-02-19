@@ -1,7 +1,11 @@
 'use strict';
 
 const FILTERS = [`All`, `Overdue`, `Today`, `Favorites`, `Repeating`, `Tags`, `Archive`];
-const DEFAULT_CARDS_AMOUNT = 7;
+
+const CardsAmount = {
+  DEFAULT: 7,
+  MAX: 10
+};
 
 const filtersBar = document.querySelector(`.main__filter`);
 const taskBoard = document.querySelector(`.board__tasks`);
@@ -30,7 +34,7 @@ const getFilterElement = (caption, amount, isChecked = false) => {
 
 const renderFilters = () => {
   FILTERS.forEach((it) => {
-    filtersBar.insertAdjacentHTML(`beforeend`, getFilterElement(it, getRandomNumber(0, 10)));
+    filtersBar.insertAdjacentHTML(`beforeend`, getFilterElement(it, getRandomNumber(0, CardsAmount.MAX)));
   });
 };
 
@@ -337,11 +341,11 @@ const renderCards = (amount) => {
   }
 };
 
-renderCards(DEFAULT_CARDS_AMOUNT);
+renderCards(CardsAmount.DEFAULT);
 
 const onFiltersBarClick = () => {
   removeChildren(taskBoard);
-  renderCards(getRandomNumber(0, 10));
+  renderCards(getRandomNumber(0, CardsAmount.MAX));
 };
 
 filtersBar.addEventListener(`click`, onFiltersBarClick);
