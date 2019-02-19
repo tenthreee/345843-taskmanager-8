@@ -1,6 +1,7 @@
 'use strict';
 
 const FILTERS = [`All`, `Overdue`, `Today`, `Favorites`, `Repeating`, `Tags`, `Archive`];
+const DEFAULT_CARDS_AMOUNT = 7;
 
 const filtersBar = document.querySelector(`.main__filter`);
 const taskBoard = document.querySelector(`.board__tasks`);
@@ -336,7 +337,7 @@ const renderCards = (amount) => {
   }
 };
 
-renderCards(7);
+renderCards(DEFAULT_CARDS_AMOUNT);
 
 const onFiltersBarClick = () => {
   removeChildren(taskBoard);
