@@ -1,5 +1,4 @@
-export default () => {
-  return `<article class="card card--blue">
+export default () => `<article class="card card--blue">
     <form class="card__form" method="get">
       <div class="card__inner">
         <div class="card__control">
@@ -291,4 +290,3 @@ export default () => {
       </div>
     </form>
   </article>`;
-};

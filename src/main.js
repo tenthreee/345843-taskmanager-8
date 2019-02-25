@@ -1,6 +1,6 @@
-import makeFilter from './src/make-filter.js';
-import makeTask from './src/make-task.js';
-import getRandomNumber from './src/util.js';
+import makeFilter from './make-filter.js';
+import makeTask from './make-task.js';
+import getRandomNumber from './util.js';
 
 const FILTERS = [`All`, `Overdue`, `Today`, `Favorites`, `Repeating`, `Tags`, `Archive`];
 
