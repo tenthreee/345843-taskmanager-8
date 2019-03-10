@@ -1,6 +1,7 @@
 import makeFilter from './make-filter.js';
 import makeTask from './make-task.js';
 import getRandomNumber from './util.js';
+import getTask from './get-task.js';
 
 const FILTERS = [`All`, `Overdue`, `Today`, `Favorites`, `Repeating`, `Tags`, `Archive`];
 
@@ -29,7 +30,7 @@ renderFilters();
 
 const renderTasks = (amount) => {
   for (let i = 0; i < amount; i++) {
-    taskBoard.insertAdjacentHTML(`beforeend`, makeTask());
+    taskBoard.insertAdjacentHTML(`beforeend`, makeTask(getTask()));
   }
 };
 

@@ -1,4 +1,4 @@
-export default () => `<article class="card card--blue">
+export default (task) => `<article class="card card--${task.color}">
     <form class="card__form" method="get">
       <div class="card__inner">
         <div class="card__control">
@@ -26,7 +26,7 @@ export default () => `<article class="card card--blue">
           <label>
             <textarea
               class="card__text"
-              placeholder="Start typing your text here..."
+              placeholder="${task.title}"
               name="text"
             ></textarea>
           </label>
@@ -44,18 +44,18 @@ export default () => `<article class="card card--blue">
                   <input
                     class="card__date"
                     type="text"
-                    placeholder="23 September"
+                    placeholder="${task.dueDate}"
                     name="date"
-                    value="23 September"
+                    value="${task.dueDate}"
                   />
                 </label>
                 <label class="card__input-deadline-wrap">
                   <input
                     class="card__time"
                     type="text"
-                    placeholder="11:15 PM"
+                    placeholder="${task.dueDate}"
                     name="time"
-                    value="11:15 PM"
+                    value="${task.dueDate}"
                   />
                 </label>
               </fieldset>
@@ -153,7 +153,7 @@ export default () => `<article class="card card--blue">
                     class="card__hashtag-hidden-input"
                   />
                   <button type="button" class="card__hashtag-name">
-                    #repeat
+                    #${[...task.tags][Math.floor(Math.random() * [...task.tags].length)]}
                   </button>
                   <button type="button" class="card__hashtag-delete">
                     delete
@@ -168,7 +168,7 @@ export default () => `<article class="card card--blue">
                     class="card__hashtag-hidden-input"
                   />
                   <button type="button" class="card__hashtag-name">
-                    #cinema
+                    #${[...task.tags][Math.floor(Math.random() * [...task.tags].length)]}
                   </button>
                   <button type="button" class="card__hashtag-delete">
                     delete
@@ -183,7 +183,7 @@ export default () => `<article class="card card--blue">
                     class="card__hashtag-hidden-input"
                   />
                   <button type="button" class="card__hashtag-name">
-                    #entertaiment
+                    #${[...task.tags][Math.floor(Math.random() * [...task.tags].length)]}
                   </button>
                   <button type="button" class="card__hashtag-delete">
                     delete
@@ -209,7 +209,7 @@ export default () => `<article class="card card--blue">
               name="img"
             />
             <img
-              src="img/sample-img.jpg"
+              src="${task.picture}"
               alt="task picture"
               class="card__img"
             />
