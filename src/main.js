@@ -1,7 +1,8 @@
 import makeFilter from './make-filter.js';
-import makeTask from './make-task.js';
 import getRandomNumber from './util.js';
 import getTask from './get-task.js';
+import {Task} from './task.js';
+import {TaskEdit} from './task-edit.js';
 
 const FILTERS = [`All`, `Overdue`, `Today`, `Favorites`, `Repeating`, `Tags`, `Archive`];
 
@@ -12,6 +13,8 @@ const CardsAmount = {
 
 const filtersBar = document.querySelector(`.main__filter`);
 const taskBoard = document.querySelector(`.board__tasks`);
+const task = new Task(getTask());
+const editTask = new TaskEdit(getTask());
 
 const removeChildren = (parent) => {
   parent.innerHTML = ``;
@@ -27,20 +30,16 @@ const renderFilters = () => {
 };
 
 renderFilters();
+taskBoard.appendChild(task.render());
 
-const renderTasks = (amount) => {
-  for (let i = 0; i < amount; i++) {
-    taskBoard.insertAdjacentHTML(`beforeend`, makeTask(getTask()));
-  }
+task.onEdit = () => {
+  editTask.render();
+  taskBoard.replaceChild(editTask.element, task.element);
+  task.unrender();
 };
 
-renderTasks(CardsAmount.DEFAULT);
-
-const onFiltersBarClick = (evt) => {
-  let amount = document.querySelector(`.${evt.target.id}-count`).innerHTML;
-
-  removeChildren(taskBoard);
-  renderTasks(amount);
+editTask.onSubmit = () => {
+  task.render();
+  taskBoard.replaceChild(task.element, editTask.element);
+  editTask.unrender();
 };
-
-filtersBar.addEventListener(`click`, onFiltersBarClick);
