@@ -1,6 +1,6 @@
 import createElement from './create-element.js';
 
-export class TaskEdit {
+export default class TaskEdit {
   constructor(data) {
     this._title = data.title;
     this._tags = data.tags;
@@ -304,7 +304,7 @@ export class TaskEdit {
   }
 
   unbind() {
-    this._element.querySelector(`.card__form`)
-        .removeEventListener(`submit`, this._onSubmitButtonClick.bind(this));
+    // this._element.querySelector(`.card__form`)
+    //     .removeEventListener(`submit`, this._onSubmitButtonClick.bind(this));
   }
 }

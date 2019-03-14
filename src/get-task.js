@@ -13,13 +13,13 @@ export default () => ({
     `keks`,
   ]),
   picture: `//picsum.photos/100/100?r=${Math.random()}`,
-  // color: [
-  //   `black`,
-  //   `yellow`,
-  //   `blue`,
-  //   `green`,
-  //   `pink`,
-  // ][Math.floor(Math.random() * 5)],
+  color: [
+    `black`,
+    `yellow`,
+    `blue`,
+    `green`,
+    `pink`,
+  ][Math.floor(Math.random() * 5)],
   repeatingDays: {
     'mo': true,
     'tu': false,
