@@ -7,6 +7,7 @@ export default class Task {
     this._picture = data.picture;
     this._dueDate = data.dueDate;
     this._repeatingDays = data.repeatingDays;
+    this._onSubmitButtonClick = this._onSubmitButtonClick.bind(this);
 
     this._element = null;
     this._state = {
@@ -292,7 +293,7 @@ export default class Task {
 
   bind() {
     this._element.querySelector(`.card__btn--edit`)
-        .addEventListener(`click`, this._onEditButtonClick.bind(this));
+        .addEventListener(`click`, this._onEditButtonClick);
   }
 
   render() {
@@ -302,8 +303,8 @@ export default class Task {
   }
 
   unbind() {
-    // this._element.querySelector(`.card__btn--edit`)
-    //     .removeEventListener(`click`, this._onEditButtonClick.bind(this));
+    this._element.querySelector(`.card__btn--edit`)
+        .removeEventListener(`click`, this._onEditButtonClick);
   }
 
   unrender() {

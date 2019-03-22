@@ -7,6 +7,7 @@ export default class TaskEdit {
     this._picture = data.picture;
     this._dueDate = data.dueDate;
     this._repeatingDays = data.repeatingDays;
+    this._onSubmitButtonClick = this._onSubmitButtonClick.bind(this);
 
     this._element = null;
     this._onSubmit = null;
@@ -300,11 +301,11 @@ export default class TaskEdit {
 
   bind() {
     this._element.querySelector(`.card__form`)
-        .addEventListener(`submit`, this._onSubmitButtonClick.bind(this));
+        .addEventListener(`submit`, this._onSubmitButtonClick);
   }
 
   unbind() {
-    // this._element.querySelector(`.card__form`)
-    //     .removeEventListener(`submit`, this._onSubmitButtonClick.bind(this));
+    this._element.querySelector(`.card__form`)
+        .removeEventListener(`submit`, this._onSubmitButtonClick);
   }
 }
