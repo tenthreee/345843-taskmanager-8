@@ -1,20 +1,16 @@
-import createElement from './create-element.js';
+import Component from './component.js';
 
-export default class Task {
+export default class Task extends Component {
   constructor(data) {
+    super();
     this._title = data.title;
     this._tags = data.tags;
     this._picture = data.picture;
     this._dueDate = data.dueDate;
     this._repeatingDays = data.repeatingDays;
-    this._onSubmitButtonClick = this._onSubmitButtonClick.bind(this);
-
-    this._element = null;
-    this._state = {
-      // isEdit: false
-    };
-
     this._onEdit = null;
+
+    this._onEditButtonClick = this._onEditButtonClick.bind(this);
   }
 
   _isRepeated() {
@@ -23,10 +19,6 @@ export default class Task {
 
   _onEditButtonClick() {
     return typeof this._onEdit === `function` && this._onEdit();
-  }
-
-  get element() {
-    return this._element;
   }
 
   set onEdit(fn) {
@@ -291,24 +283,13 @@ export default class Task {
       </article>`.trim();
   }
 
-  bind() {
+  createListeners() {
     this._element.querySelector(`.card__btn--edit`)
         .addEventListener(`click`, this._onEditButtonClick);
   }
 
-  render() {
-    this._element = createElement(this.template);
-    this.bind();
-    return this._element;
-  }
-
-  unbind() {
+  removeListeners() {
     this._element.querySelector(`.card__btn--edit`)
         .removeEventListener(`click`, this._onEditButtonClick);
-  }
-
-  unrender() {
-    this.unbind();
-    this._element = null;
   }
 }
